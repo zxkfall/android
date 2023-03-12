@@ -1,2 +1,0 @@
-ninja: Entering directory `D:\Chrome\OpenCV-android-sdk\sdk\.cxx\Debug\5t1y2w55\arm64-v8a'
-ninja: no work to do.
