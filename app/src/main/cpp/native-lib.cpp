@@ -8,3 +8,10 @@ Java_com_flywinter_android_MainActivity_stringFromJNI(
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
 }
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_flywinter_android_MainActivity_stringFromJNICopy(
+        JNIEnv* env,
+        jobject /* this */) {
+    std::string hello = "Hello from C++ Copy";
+    return env->NewStringUTF(hello.c_str());
+}

@@ -2,8 +2,9 @@ package com.flywinter.android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import android.util.Log
 import com.flywinter.android.databinding.ActivityMainBinding
+import org.opencv.android.OpenCVLoader
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
         // Example of a call to a native method
         binding.sampleText.text = stringFromJNI()
+
+
     }
 
     /**
@@ -24,11 +27,19 @@ class MainActivity : AppCompatActivity() {
      * which is packaged with this application.
      */
     external fun stringFromJNI(): String
+    external fun stringFromJNICopy(): String
 
     companion object {
+        private var TAG: String = "MainActivity"
+
         // Used to load the 'android' library on application startup.
         init {
-            System.loadLibrary("android 1")
+            System.loadLibrary("android")
+            if (OpenCVLoader.initDebug()){
+                Log.i(TAG, "opencv installed successfully");
+            }else{
+                Log.i(TAG, "opencv not installed");
+            }
         }
     }
 }
